@@ -21,7 +21,7 @@ train = train.merge(riders, how='left', on='Rider Id')
 
 y_train = train[['Time from Pickup to Arrival']]
 X_train = train[['Pickup Lat','Pickup Long',
-                 'Destination Lat','Destination Long']]
+                 'Destination Lat']]
 
 # Fit model
 lm_regression = LinearRegression(normalize=True)
@@ -29,6 +29,6 @@ print ("Training Model...")
 lm_regression.fit(X_train, y_train)
 
 # Pickle model for use within our API
-save_path = '../trained-models/sendy_simple_lm_regression.pkl'
+save_path = '../trained-models/final_model.pkl'
 print (f"Training completed. Saving model to: {save_path}")
 pickle.dump(lm_regression, open(save_path,'wb'))
